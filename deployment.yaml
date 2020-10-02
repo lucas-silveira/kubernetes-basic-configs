@@ -22,12 +22,12 @@ spec: # spec do deployment
           image: nginx:1.17-alpine
           ports:
             - containerPort: 80
-          volumeMounts:
+          volumeMounts: # monta o volume efetivamente
             - mountPath: /etc/nginx/conf.d
               name: nginx-conf
               readOnly: true
 
-      volumes:
+      volumes: # definição de volumes
         - name: nginx-conf
           configMap:
             name: basic-configmap
