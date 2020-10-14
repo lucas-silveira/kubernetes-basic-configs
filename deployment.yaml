@@ -22,6 +22,14 @@ spec: # spec do deployment
           image: nginx:1.17-alpine
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              memory: 100Mi
+              cpu: 0.2 # ou 200m
+            limits:
+              cpu: 0.25 # ou 250m
+              # ao contrário da CPU, se o pod atingir o limite de memória, ele será reiniciado pelo Kubernetes
+              memory: 200Mi
           volumeMounts: # monta o volume efetivamente
             - mountPath: /etc/nginx/conf.d
               name: nginx-conf
